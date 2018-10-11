@@ -25,6 +25,7 @@ function createTweetElement(data){
         <footer>
           <p>${date}</p>
           <div class='tweet-icons'>
+
             <i class='icon ion-md-flag'></i>
             <i class='icon ion-md-repeat'></i>
             <i class='icon ion-md-heart'></i>
@@ -86,10 +87,17 @@ function postTweet(){
     clearError();
     let remainSpace = $('.new-tweet span').text();
     if (remainSpace >= 0 && remainSpace < 140){
+      // Process and serialize user input
       let tweetContent = $(this).find("textarea").val();
       $(this).find("textarea").val(escape(tweetContent));
       let newTweet = $(this).serialize();
-      $.post("/tweets", newTweet, loadTweets);
+
+      $.post("/tweets", newTweet).done(function(data, statusText, response){
+        if (response.status == 201){
+          loadTweets();
+        }
+      });
+
       $(this).trigger('reset');
       window.setTimeout(100, updateCounter());
     } else if (remainSpace == 140){
