@@ -1,0 +1,61 @@
+#nav-bar{
+  height: 80px;
+  width: 100%;
+  margin: 0;
+  padding: 0 20em;
+  position: fixed;
+  background-color:#00a087;
+  color: #e8fdff;
+  z-index: 2;
+}
+
+#nav-bar .logo{
+  width: 80px;
+  height: 80px;
+  float: left;
+}
+
+#nav-bar .header{
+  font-size: 200%;
+  float: left;
+  margin-left: 10px;
+  line-height: 80px;
+}
+
+
+/* Buttons on nav bar*/
+
+#nav-bar .nav-btn{
+  width: 120px;
+  height: 60px;
+  margin: 10px 0 10px 10px;
+  float: right;
+  background-color: #c8f4ed;
+  color: #00a087;
+  border: 1px solid black;
+  border-radius: 6px;
+  text-align: center;
+}
+
+.nav-btn p{
+  line-height: 60px;
+  margin: 0;
+  display: inline-block;
+  font-size: 1.2em;
+}
+
+.nav-btn i{
+  font-size: 1.2em;
+  margin-right: 5px;
+}
+
+#compose-btn:hover{
+  background-color: #fff;
+  color: #222;
+}
+
+#nav-bar:after {
+  content: "";
+  display: block;
+  clear: both;
+}

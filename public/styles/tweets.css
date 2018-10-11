@@ -1,0 +1,87 @@
+/* General Settings*/
+#tweet-container{
+  margin: 0 2em;
+}
+
+.tweet{
+  margin-top: 10px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  overflow: hidden;
+}
+
+.tweet p{
+  margin: 0;
+}
+
+/* Tweet Header */
+
+.tweet header{
+  background-color: #eee;
+  padding: 0.5em;
+  display: flex;
+  opacity: 0.6;
+}
+
+.tweet .avatar{
+  width: 55px;
+  height: 55px;
+  margin-right: 0.7em;
+}
+
+
+.tweet h2{
+  margin-top: 0;
+}
+
+.tweet header div{
+  margin-left: auto;
+  color: #000;
+  font-size: 85%;
+  padding-top: .7em;
+}
+
+/*Tweet Content*/
+
+.tweet .tweet-content{
+  padding: 2em 0.7em;
+  overflow-wrap: break-word;
+}
+
+/* Tweet Footer */
+
+.tweet footer{
+  border-top: 1px solid #ddd;
+  padding: 0 0.5em;
+  font-size: 80%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.tweet footer p{
+  padding: 0.7em 0;
+}
+
+.tweet .tweet-icons{
+  font-size: 18px;
+  color: #53b5ae;
+  margin: auto 0;
+  display: none;
+}
+
+.tweet-icons i{
+  margin-left: 10px;
+}
+
+/* Hover Effects for tweet element*/
+
+.tweet:hover {
+  border: 1px solid #444;
+}
+.tweet:hover header{
+  opacity: 1;
+}
+
+.tweet:hover .tweet-icons{
+  display: block;
+}
