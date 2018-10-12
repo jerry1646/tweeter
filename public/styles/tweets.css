@@ -69,8 +69,19 @@
   display: none;
 }
 
-.tweet-icons i{
+.tweet-icons form{
+  display: inline;
   margin-left: 10px;
+  cursor: pointer;
+}
+
+.like :hover{
+  color: #ff4274;
+}
+
+.like-count{
+  display: inline-block;
+
 }
 
 /* Hover Effects for tweet element*/

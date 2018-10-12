@@ -6,14 +6,16 @@
 
 
 function createTweetElement(data){
+  const id = data._id;
   const userName = data.user.name;
   const avatar = data.user.avatars.regular;
   const handle = data.user.handle;
   const tweetContent = data.content.text;
+  const like = data.like;
   const date = `${Math.round((Date.now() - Number(data.created_at))/(1000*3600*24))} days ago`;
 
   let $newTweet = `
-      <article class='tweet'>
+      <article class='tweet' id = ${id}>
         <header>
           <img class='avatar' src=${avatar}>
           <h2>${userName}</h2>
@@ -26,9 +28,18 @@ function createTweetElement(data){
           <p>${date}</p>
           <div class='tweet-icons'>
 
-            <i class='icon ion-md-flag'></i>
-            <i class='icon ion-md-repeat'></i>
-            <i class='icon ion-md-heart'></i>
+            <form class='flag'>
+              <i class='icon ion-md-flag'></i>
+            </form>
+            <form class='retweet'>
+              <i class='icon ion-md-repeat'></i>
+            </form>
+            <form class='like'>
+              <i class='icon ion-md-heart'></i>
+            </form>
+            <div class='like-count'>
+              ${like}
+            </div>
           </div>
         </footer>
       </article>`;
@@ -135,4 +146,29 @@ $(document).ready(function(){
       $new.slideUp(100);
     }
   });
+
+
+// Like feature
+
+// action="/?_method=PUT" method="post"
+  $('#tweet-container').on('click', 'i', (function(){
+    console.log("like button clicked");
+    // $(this).parent().submit();
+    console.log($(this).parents("article").attr("id"));
+    const likeNum = Number($(this).parents("div").children(".like-count").text());
+    console.log(likeNum);
+    $.ajax({
+      type:"put",
+      url: "/tweets",
+      data: {
+        id:$(this).parents("article").attr("id"),
+        likeNum: likeNum
+      },
+      success: function(){
+        console.log("Put request sent");
+      }
+    });
+
+    $(this).parents("div").children(".like-count").text(likeNum+1);
+  }));
 });

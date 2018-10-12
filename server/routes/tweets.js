@@ -17,6 +17,25 @@ module.exports = function(DataHelpers) {
     });
   });
 
+  tweetsRoutes.put("/", function(req,res){
+    // update like count
+    const newlike = Number(req.body.likeNum) + 1;
+    const data = {
+      id: req.body.id,
+      like: newlike
+    }
+    // console.log(data);
+    // console.log(id);
+    // res.status(201).send();
+    DataHelpers.updateLike(data, (err) => {
+      if (err) {
+        res.status(500).json({ error: err.message });
+      } else {
+        res.status(201).send();
+      }
+    });
+  })
+
   tweetsRoutes.post("/", function(req, res) {
     if (!req.body.text) {
       res.status(400).json({ error: 'invalid request: no data in POST body'});
@@ -29,7 +48,8 @@ module.exports = function(DataHelpers) {
       content: {
         text: req.body.text
       },
-      created_at: Date.now()
+      created_at: Date.now(),
+      like: 0
     };
 
     DataHelpers.saveTweet(tweet, (err) => {
