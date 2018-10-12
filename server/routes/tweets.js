@@ -18,10 +18,9 @@ module.exports = function(DataHelpers) {
   });
 
   tweetsRoutes.put("/:id", function(req,res){
-    const newlike = Number(req.body.likeNum) + 1;
     const data = {
       id: req.params.id,
-      like: newlike
+      like: Number(req.body.likeNum)
     };
     DataHelpers.updateLike(data, (err) => {
       if (err) {

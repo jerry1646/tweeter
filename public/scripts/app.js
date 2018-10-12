@@ -11,7 +11,7 @@ function createTweetElement(data){
   const date = `${Math.round((Date.now() - Number(data.created_at))/(1000*3600*24))} days ago`;
 
   let $newTweet = `
-      <article class='tweet' id = ${id}>
+      <article class='tweet' id = ${id} data-liked = "false">
         <header>
           <img class='avatar' src=${avatar}>
           <h2>${userName}</h2>
@@ -141,17 +141,28 @@ function toggleCompose(){
 // Like Feature
 
 function updateLike(){
+  const tweet = $(this).parents("article");
   const tweetID = $(this).parents("article").attr("id")
-    const likeNum = Number($(this).parents("div").children(".like-count").text());
-    $.ajax({
-      type:"put",
-      url: `/tweets/${tweetID}`,
-      data: {
-        likeNum: likeNum
-      },
-    });
+  const likeNum = Number($(this).parents("div").children(".like-count").text());
+  let newLike = likeNum;
+  if (tweet.data('liked') == false) {
+    tweet.data('liked', true);
+    $(this).addClass("liked");
+    newLike += 1;
+  } else{
+    tweet.data('liked', false);
+    $(this).removeClass("liked");
+    newLike -= 1;
+  }
+  $.ajax({
+    type:"put",
+    url: `/tweets/${tweetID}`,
+    data: {
+      likeNum: newLike
+    },
+  });
 
-    $(this).parents("div").children(".like-count").text(likeNum+1);
+  $(this).parents("div").children(".like-count").text(newLike);
 };
 
 // Document.ready

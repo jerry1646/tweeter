@@ -19,13 +19,14 @@ body {
   margin: 0;
   color: #244751;
   background-color: #eee;
+  font-size: 17px;
 }
 
 /*
  * Additional CSS can be defined below or in other CSS files, as per instructions
  */
 main {
-  width: 450px;
+  width: 40vw;
   margin: 0 auto;
   background-color: #fff;
   padding-top: 140px;
@@ -45,18 +46,20 @@ main {
 }
 #nav-bar .logo {
   width: 80px;
-  height: 80px;
+  max-width: 80px;
+  /*height: 80px;*/
   float: left;
 }
 #nav-bar .header {
-  font-size: 200%;
+  font-size: 250%;
   float: left;
   margin-left: 10px;
-  line-height: 80px;
+  vertical-align: middle;
+  padding-top: 14.5px;
 }
 #nav-bar .nav-btn {
-  width: 120px;
-  height: 60px;
+  width: 118px;
+  height: 58px;
   margin: 10px 0 10px 10px;
   float: right;
   background-color: #c8f4ed;
@@ -67,10 +70,10 @@ main {
   cursor: pointer;
 }
 #nav-bar .nav-btn p {
-  line-height: 60px;
+  line-height: 58px;
   margin: 0;
   display: inline-block;
-  font-size: 1.2em;
+  font-size: 125%;
 }
 #nav-bar .nav-btn i {
   font-size: 1.2em;
@@ -186,6 +189,10 @@ main {
 .tweet footer .tweet-icons .like-count {
   display: inline-block;
   cursor: default;
+}
+
+.tweet .liked {
+  color: #ff4274;
 }
 
 /* Hover Effects for tweet element*/

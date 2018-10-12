@@ -1,0 +1,35 @@
+@media (max-width: 1260px) {
+  #nav-bar {padding: 0;}
+  #nav-bar > div{
+    width: 580px;
+    margin: 0 auto;
+  }
+}
+
+
+@media (min-width:620px){
+  main{width: 576px;}
+}
+
+
+@media (min-width:530px)and (max-width:619px){
+  main{width: 93vw;}
+  #nav-bar > div{
+    width: 93vw;
+  }
+  #nav-bar .header {
+    font-size: 200%;
+  }
+}
+
+@media (min-width:319px) and (max-width:529px) {
+  main{width: 493px;}
+
+  #nav-bar > div{
+    width: 100%;
+    padding-left: 18px;
+  }
+  #compose-btn{display: none;}
+
+  .new-tweet {display: block;}
+}
