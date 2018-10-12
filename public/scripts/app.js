@@ -149,15 +149,9 @@ $(document).ready(function(){
 
 
 // Like feature
-
-// action="/?_method=PUT" method="post"
   $('#tweet-container').on('click', 'i', (function(){
-    // console.log("like button clicked");
-    // $(this).parent().submit();
-    // console.log($(this).parents("article").attr("id"));
     const tweetID = $(this).parents("article").attr("id")
     const likeNum = Number($(this).parents("div").children(".like-count").text());
-    console.log(likeNum);
     $.ajax({
       type:"put",
       url: `/tweets/${tweetID}`,
@@ -171,4 +165,6 @@ $(document).ready(function(){
 
     $(this).parents("div").children(".like-count").text(likeNum+1);
   }));
+
+
 });
