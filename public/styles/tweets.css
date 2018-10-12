@@ -81,7 +81,7 @@
 
 .like-count{
   display: inline-block;
-
+  cursor: default;
 }
 
 /* Hover Effects for tweet element*/

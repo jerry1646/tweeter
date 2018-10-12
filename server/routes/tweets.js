@@ -17,7 +17,6 @@ module.exports = function(DataHelpers) {
     });
   });
 
-  // update like count
   tweetsRoutes.put("/:id", function(req,res){
     const newlike = Number(req.body.likeNum) + 1;
     const data = {

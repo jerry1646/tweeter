@@ -1,9 +1,5 @@
-/*
- * Client-side JS logic goes here
- * jQuery is already loaded
- * Reminder: Use (and do all your DOM work in) jQuery's document ready function
- */
 
+// Create and prepend HTML element when a new tweet is posted
 
 function createTweetElement(data){
   const id = data._id;
@@ -72,7 +68,7 @@ function updateCounter(){
   }
 }
 
-// Error Message
+// Error Display
 function errorMessage(message){
   $(".alert").text(message);
   $(".alert").slideDown(200);
@@ -128,6 +124,35 @@ function loadTweets(){
     .fail(function(){errorMessage("Some error occured")});
 }
 
+// Toggle Compose Tweet Element
+
+function toggleCompose(){
+  let $new = $('.new-tweet');
+  if ($new.is(":hidden")){
+    $new.slideDown(100);
+    $new.find('textarea').focus();
+  } else{
+    $new.slideUp(100);
+  }
+}
+
+
+
+// Like Feature
+
+function updateLike(){
+  const tweetID = $(this).parents("article").attr("id")
+    const likeNum = Number($(this).parents("div").children(".like-count").text());
+    $.ajax({
+      type:"put",
+      url: `/tweets/${tweetID}`,
+      data: {
+        likeNum: likeNum
+      },
+    });
+
+    $(this).parents("div").children(".like-count").text(likeNum+1);
+};
 
 // Document.ready
 
@@ -137,34 +162,9 @@ $(document).ready(function(){
   loadTweets();
   postTweet();
 
-  $("#compose-btn").click(function(){
-    let $new = $('.new-tweet');
-    if ($new.is(":hidden")){
-      $new.slideDown(100);
-      $new.find('textarea').focus();
-    } else{
-      $new.slideUp(100);
-    }
-  });
+  $("#compose-btn").on('click', toggleCompose);
 
-
-// Like feature
-  $('#tweet-container').on('click', 'i', (function(){
-    const tweetID = $(this).parents("article").attr("id")
-    const likeNum = Number($(this).parents("div").children(".like-count").text());
-    $.ajax({
-      type:"put",
-      url: `/tweets/${tweetID}`,
-      data: {
-        likeNum: likeNum
-      },
-      success: function(){
-        console.log("Put request sent");
-      }
-    });
-
-    $(this).parents("div").children(".like-count").text(likeNum+1);
-  }));
+  $('#tweet-container').on('click', 'i', updateLike);
 
 
 });
