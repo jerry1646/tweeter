@@ -29,16 +29,10 @@ module.exports = function makeDataHelpers(db) {
 
 
     updateLike: function(data, callback) {
-      // console.log(data);
-      // const _id = `ObjectId("${data.id}")`;
-      // console.log(_id);
       const like = Number(data.like);
-      // const filter = {_id: ObjectId(data.id)};
       db.collection("tweets").updateOne({_id: ObjectId(data.id)}, {$set: {"like":like}}, (err, result) => {
-        // the whole object
-        console.log("like updated");
         if (err) {
-          res.send('Something exploded on PUT /todos!')
+          res.send('Something exploded on PUT /:tweetid!')
         } else{
           callback(err);
         }

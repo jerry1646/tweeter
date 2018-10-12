@@ -152,16 +152,16 @@ $(document).ready(function(){
 
 // action="/?_method=PUT" method="post"
   $('#tweet-container').on('click', 'i', (function(){
-    console.log("like button clicked");
+    // console.log("like button clicked");
     // $(this).parent().submit();
-    console.log($(this).parents("article").attr("id"));
+    // console.log($(this).parents("article").attr("id"));
+    const tweetID = $(this).parents("article").attr("id")
     const likeNum = Number($(this).parents("div").children(".like-count").text());
     console.log(likeNum);
     $.ajax({
       type:"put",
-      url: "/tweets",
+      url: `/tweets/${tweetID}`,
       data: {
-        id:$(this).parents("article").attr("id"),
         likeNum: likeNum
       },
       success: function(){

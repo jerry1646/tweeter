@@ -17,16 +17,13 @@ module.exports = function(DataHelpers) {
     });
   });
 
-  tweetsRoutes.put("/", function(req,res){
-    // update like count
+  // update like count
+  tweetsRoutes.put("/:id", function(req,res){
     const newlike = Number(req.body.likeNum) + 1;
     const data = {
-      id: req.body.id,
+      id: req.params.id,
       like: newlike
-    }
-    // console.log(data);
-    // console.log(id);
-    // res.status(201).send();
+    };
     DataHelpers.updateLike(data, (err) => {
       if (err) {
         res.status(500).json({ error: err.message });
@@ -34,7 +31,7 @@ module.exports = function(DataHelpers) {
         res.status(201).send();
       }
     });
-  })
+  });
 
   tweetsRoutes.post("/", function(req, res) {
     if (!req.body.text) {
