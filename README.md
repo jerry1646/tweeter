@@ -9,9 +9,9 @@ A simple single-page AJAX-based Twitter clone that uses jQuery, Express, MongoDB
 3. Start the web server using the `npm run local` command. The app will be served at <http://localhost:8080/>.
 4. Go to <http://localhost:8080/> in your browser.
 
-## Final Product
-!["Home page"](https://github.com/jerry1646/tweeter/tree/master/docs/page.png)
-!["Functional like feature"](https://github.com/jerry1646/tweeter/tree/master/docs/like-feature.png)
+## Screenshots
+!["Home page"](https://github.com/jerry1646/tweeter/blob/master/docs/page.png)
+!["Functional like feature"](https://github.com/jerry1646/tweeter/blob/master/docs/like-feature.png)
 
 ## Dependencies
 
