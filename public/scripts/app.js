@@ -31,7 +31,7 @@ function createTweetElement(data){
               <i class='icon ion-md-repeat'></i>
             </form>
             <form class='like'>
-              <i class='icon ion-md-heart'></i>
+              <i class='icon ion-md-heart' id='like'></i>
             </form>
             <div class='like-count'>
               ${like}
@@ -175,7 +175,7 @@ $(document).ready(function(){
 
   $("#compose-btn").on('click', toggleCompose);
 
-  $('#tweet-container').on('click', 'i', updateLike);
+  $('#tweet-container').on('click', '#like', updateLike);
 
 
 });
