@@ -2,7 +2,7 @@
 
 A simple single-page AJAX-based Twitter clone that uses jQuery, Express, MongoDB, HTML5 and vanilla CSS3 to achieve basic Twitter functionalities
 
-Alse hosted here (https://infinite-badlands-59228.herokuapp.com/)
+Also hosted here (https://infinite-badlands-59228.herokuapp.com/)
 
 ## Getting Started
 
